@@ -261,3 +261,53 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Audio element is not available on the page.");
     }
 });
+
+
+
+
+// Request a wake lock to prevent the screen from dimming or going to sleep
+let wakeLock = null;
+
+async function requestWakeLock() {
+    try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Wake lock is active.');
+
+        // Listen for release events (e.g., when the lock is interrupted)
+        wakeLock.addEventListener('release', () => {
+            console.log('Wake lock was released.');
+        });
+    } catch (err) {
+        console.error('Failed to acquire wake lock:', err);
+    }
+}
+
+// Release the wake lock when the tab becomes hidden
+function releaseWakeLock() {
+    if (wakeLock !== null) {
+        wakeLock.release()
+            .then(() => {
+                console.log('Wake lock released.');
+                wakeLock = null;
+            })
+            .catch(err => console.error('Error releasing wake lock:', err));
+    }
+}
+
+// Handle visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        requestWakeLock(); // Re-acquire wake lock when tab becomes visible
+    } else {
+        releaseWakeLock(); // Release wake lock when tab is not visible
+    }
+});
+
+// Request wake lock on page load
+document.addEventListener('DOMContentLoaded', () => {
+    if ('wakeLock' in navigator) {
+        requestWakeLock(); // Request wake lock if supported
+    } else {
+        console.warn('Wake Lock API is not supported on this browser.');
+    }
+});
