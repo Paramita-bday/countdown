@@ -1,5 +1,5 @@
 // Preset birthday date and time
-const presetBirthday = "2025-01-17T00:00:00"; // Replace with the target date and time
+const presetBirthday = "2025-01-16T17:15:00"; // Replace with the target date and time
 const yourBirthday = "2002-01-17T00:00:00"; // Replace with your actual birth date
 const redirectUrl = "https://paramita-bday.github.io/hbdparo/";
 
