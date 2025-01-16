@@ -126,6 +126,24 @@ playMusicButton.addEventListener("click", () => {
     playMusicButton.style.display = "none"; // Hide the button after the music starts
 });
 
+// Music play/pause based on tab visibility
+document.addEventListener("visibilitychange", () => {
+    const music = document.getElementById("backgroundMusic");
+    if (document.visibilityState === "hidden") {
+        // Pause the music when the tab is minimized or hidden
+        if (!music.paused) {
+            music.pause();
+        }
+    } else if (document.visibilityState === "visible") {
+        // Resume the music when the tab is active again
+        if (music.paused) {
+            music.play().catch((error) => {
+                console.error("Failed to resume music:", error);
+            });
+        }
+    }
+});
+
 // Ensure video plays on mobile and desktop
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("backgroundVideo");
