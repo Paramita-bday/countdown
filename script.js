@@ -137,7 +137,34 @@ playMusicButton.addEventListener("click", () => {
     music.play().catch((error) => {
         console.error("Music play failed:", error); // Handle autoplay issues
     });
-    playMusicButton.style.display = "none"; // Hide the button after the music starts
+    
+    // Show popup
+    const popup = document.createElement("div");
+    popup.id = "musicPopup";
+    popup.textContent = "Music is on! Turn up the volume to enjoy the full experience.";
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    popup.style.color = "#FFD700";
+    popup.style.padding = "20px";
+    popup.style.borderRadius = "10px";
+    popup.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.2)";
+    popup.style.fontFamily = "Arial, sans-serif";
+    popup.style.fontSize = "16px";
+    popup.style.textAlign = "center";
+    popup.style.zIndex = "1000";
+
+    document.body.appendChild(popup);
+
+    // Auto-close the popup after 3 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+
+    // Hide the button after the music starts
+    playMusicButton.style.display = "none";
 });
 
 // Music play/pause based on tab visibility
