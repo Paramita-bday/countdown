@@ -184,10 +184,10 @@ function showMusicPopupWithLocalBlur(audioElement) {
         // Log the current volume level (optional)
         console.log("Current volume:", audioElement.volume);
 
-        // Auto-close the popup after 2 seconds
+        // Auto-close the popup after 3 seconds
         setTimeout(() => {
             popup.remove();
-        }, 2000);
+        }, 3000);
     } else {
         console.error("Audio element not found.");
     }
