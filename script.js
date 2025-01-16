@@ -137,11 +137,11 @@ playMusicButton.addEventListener("click", () => {
     music.play().catch((error) => {
         console.error("Music play failed:", error); // Handle autoplay issues
     });
-    
+
     // Show popup
     const popup = document.createElement("div");
     popup.id = "musicPopup";
-    popup.textContent = "Music is on! Turn up the volume to enjoy the full experience.";
+    popup.textContent = "Music is on! Turn up the volume to enjoy the full experience :)";
     popup.style.position = "fixed";
     popup.style.top = "50%";
     popup.style.left = "50%";
