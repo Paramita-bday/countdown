@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Paramita's Birthday 🎂</div>
+        <div class="profile-pic-container">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+    </header>
+
+    <!-- Background -->
+    <div class="background">
+        <video autoplay muted loop playsinline preload id="backgroundVideo">
+            <source src="birthday-video.mp4" type="video/mp4">
+            <img src="fallback-image.jpg" alt="Birthday Celebration">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <!-- Main Content -->
+<div class="container">
+    <h1 class="title">The <span class="gradient-text">Countdown</span>  Begins!</h1>
+    <p class="subtitle">Excitement is in the air as we <span class="rainbow-text">approach the big day</span>.</p>
+
+    <!-- Blurred Box for Countdown -->
+    <div class="blur-box">
+        <div id="countdown" class="countdown">
+            <div class="time-unit">
+                <span id="days" class="number">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-unit">
+                <span id="hours" class="number">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-unit">
+                <span id="minutes" class="number">00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="time-unit">
+                <span id="seconds" class="number">00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Play Music Button -->
+    <button id="playMusicButton" class="button">Play Music</button>
+    <audio id="backgroundMusic" loop>
+        <source src="birthday-music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Crafted with ❤️ for Paramita | © 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
