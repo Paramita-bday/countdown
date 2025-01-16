@@ -107,11 +107,25 @@ function displayCountdownEnded() {
     `;
     document.body.appendChild(messageContainer);
 
-    // Redirect after 3 seconds
+    // Play fireworks sound and show overlay after 1 second
+    const fireworksSound = document.getElementById("fireworksSound");
+    const fireworksOverlay = document.getElementById("fireworksOverlay");
+    const fireworksVideo = document.getElementById("fireworksVideo");
+    const music = document.getElementById("backgroundMusic");
+
+    setTimeout(() => {
+        fireworksOverlay.style.display = "block";
+        fireworksVideo.play();
+        fireworksSound.play();
+        music.volume = 0.2; // Lower background music volume
+    }, 3000); // Wait 3 second for the message to show
+
+    // Redirect after 8 seconds
     setTimeout(() => {
         messageContainer.remove();
+        fireworksOverlay.style.display = "none";
         window.location.href = redirectUrl;
-    }, 3000);
+    }, 8000);
 }
 
   
